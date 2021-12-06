@@ -28,7 +28,7 @@ func main() {
 func (love *loveContract) Boy(ctx code.Context) code.Response {
 	love.ctx = ctx
 	args := ctx.Args()
-	boy := string(args["boy"])
+	boy := love.ctx.Caller()
 	girl := string(args["girl"])
 	return love.checkLove(boy, girl)
 }
@@ -37,17 +37,13 @@ func (love *loveContract) Girl(ctx code.Context) code.Response {
 	love.ctx = ctx
 	args := ctx.Args()
 	boy := string(args["boy"])
-	girl := string(args["girl"])
+	girl := love.ctx.Caller()
 	return love.checkLove(girl, boy)
 }
 
 func (love *loveContract) checkLove(suitor string, loved string) code.Response {
 	if suitor == "" || loved == "" {
 		return code.Errors("Missing key: boy or girl")
-	}
-	operator := love.ctx.Caller()
-	if operator != suitor {
-		return code.Errors("operator is error")
 	}
 	suitorLover, err := love.beloved(suitor)
 	if err != nil {

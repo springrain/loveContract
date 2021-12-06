@@ -11,7 +11,7 @@
  ## 使用示例
  ```shell
 ##男方
-./bin/xchain-cli native invoke --method Boy -a '{"boy":"zys","girl":"cmr"}' --fee 110000 loveContract
+./bin/xchain-cli native invoke --method Boy -a '{"girl":"cmr"}' --fee 110000 loveContract
 ##女方
-./bin/xchain-cli native invoke --method Girl -a '{"boy":"zys","girl":"cmr"}' --fee 110000 loveContract
+./bin/xchain-cli native invoke --method Girl -a '{"boy":"zys"}' --fee 110000 loveContract
  ```
