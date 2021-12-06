@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -82,9 +81,8 @@ func (love *loveContract) beloved(spouse string) (string, error) {
 		}
 
 	} else {
-		loved := ""
-		err := json.Unmarshal(spouseBytes, &loved)
-		return loved, err
+		loved := string(spouseBytes)
+		return loved, nil
 	}
 
 }
